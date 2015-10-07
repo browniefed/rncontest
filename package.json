@@ -1,0 +1,14 @@
+{
+  "name": "rncontest",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node_modules/react-native/packager/packager.sh"
+  },
+  "dependencies": {
+    "art": "^0.10.0",
+    "lodash": "^3.10.1",
+    "platformsheet": "browniefed/PlatformSheet",
+    "react-native": "^0.11.4"
+  }
+}
