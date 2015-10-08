@@ -6,12 +6,14 @@ var {
     Image,
     Text,
     Navigator,
-    StyleSheet
+    StyleSheet,
+    TouchableOpacity
 } = React;
 
-var data = require('./../reactive2015.json');
+var data = require('../reactive2015.json');
 var List = require('../schedule/list');
 var Profile = require('../profile/profile');
+var Egg = require('../easter/egg');
 
 var routes = {
     list: {
@@ -28,7 +30,11 @@ var routes = {
 }
 
 var App = React.createClass({
-
+    getInitialState: function() {
+        return {
+            easter : false 
+        };
+    },
     renderScene: function(route, navigator) {
         var Component = route.component;
 
@@ -46,12 +52,27 @@ var App = React.createClass({
     popToRoute: function(route, props) {
         this.refs.navigator.push({...routes[route], props: props});
     },
+    getEaster: function() {
+        return this.state.easter ? <Egg onClose={this.handleClose}/> : <View />;
+    },
+    handleClose: function() {
+        this.setState({
+            easter: false
+        });
+    },
+    showVjeux: function() {
+        this.setState({
+            easter: true
+        })
+    },
     render: function() {
         return (
             <View style={styles.background}>
-                <View style={[styles.center, styles.header]}>
-                    <Image source={require('image!logo')} style={{height: 30}} resizeMode="contain"/>
-                </View>
+                <TouchableOpacity onLongPress={this.showVjeux}>
+                    <View style={[styles.center, styles.header]}>
+                        <Image source={require('image!logo')} style={{height: 30}} resizeMode="contain"/>
+                    </View>
+                </TouchableOpacity>
                 <View style={styles.appContainer}>
                     <Navigator
                         ref="navigator"
@@ -59,6 +80,7 @@ var App = React.createClass({
                         renderScene={this.renderScene}
                     />
                 </View>
+                {this.getEaster()}
             </View>
         )
     }

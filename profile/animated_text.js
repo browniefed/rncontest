@@ -37,7 +37,7 @@ var AnimatedText = React.createClass({
 
   _animateEntrance: function() {
     requestAnimationFrame(() => {
-      this.setState({value: this.state.value + 7});
+      this.setState({value: this.state.value + 5});
       // This is some random number that I guessed to be the length of the Shape
       if (this.state.value <= this._metricsPath.length) {
         !this._unmounted && requestAnimationFrame(this._animateEntrance);
