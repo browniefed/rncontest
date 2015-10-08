@@ -14,7 +14,7 @@ App Demo
 
 Also a not so hidden but hidden easter egg :)
 
-![http://i.imgur.com/MoIHu3a.gif](http://i.imgur.com/MoIHu3a.gif)
+![http://i.imgur.com/ONxeJ33.gif](http://i.imgur.com/ONxeJ33.gif)
 
 
 To run just run clone it and run it like a normal react native app.
