@@ -3,6 +3,7 @@ var _ = require('lodash');
 
 
 var Images = require('../app/images');
+var AnimatedDescription = require('./animated_description');
 
 var {
     ScrollView,
@@ -10,7 +11,8 @@ var {
     View,
     Text,
     Image,
-    TouchableOpacity
+    TouchableOpacity,
+    LayoutAnimation
 } = React;
 
 
@@ -34,20 +36,11 @@ var List = React.createClass({
 
         if (value.id) {
             return (
-                <View>
-                    <TouchableOpacity onPress={this.handlePress.bind(this, this.props.data.speakers[value.id], value.id)}>
-                        <View style={styles.outerRow}>
-                            <View style={styles.row}>
-                                <Image source={Images.getImage(value.id)} style={styles.listImage}/>
-                                <Text style={[styles.text, styles.textSpeaker]}>{value.title}</Text>
-                            </View>
-                            <Text style={[styles.text, styles.textTime]}>{value.time}</Text>
-                        </View>
-                    </TouchableOpacity>
-                    <View>
-                        <Text style={styles.text}>{value.summary}</Text>
-                    </View>
-                </View>
+                <AnimatedDescription 
+                    image={Images.getImage(value.id)}
+                    onPress={this.handlePress.bind(this, this.props.data.speakers[value.id], value.id)} 
+                    {...value}
+                />
             )
         }
 
